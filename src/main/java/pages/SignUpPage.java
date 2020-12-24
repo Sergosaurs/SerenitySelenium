@@ -2,8 +2,12 @@ package pages;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.annotations.DefaultUrl;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.io.File;
+import java.io.IOException;
 
 import static java.lang.String.format;
 import static org.openqa.selenium.By.xpath;
@@ -23,6 +27,20 @@ public class SignUpPage extends PageObject {
     private By checkBoxTermsConditions = xpath("//*[@id='__next']/main/div[2]/form/div[9]");
     private By buttonSignUp = xpath("//button[text() = 'Зарегистрироваться']");
     private String errorByText = "//form[@novalidate]//*[contains (text(), '%s')]";
+
+
+
+    public SignUpPage screenShooter(){
+        WebDriver driver = new ChromeDriver();
+        driver.get("http://www.google.com/");
+        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(scrFile, new File("c:\\tmp\\screenshot.png"));
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+        return this;
+    }
 
 
     public SignUpPage typeEmail(String email) {

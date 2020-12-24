@@ -13,6 +13,11 @@ public class SignUpSteps {
     }
 
     @Step
+    public void get_screenshot() {
+        page.screenShooter();
+    }
+
+    @Step
     public void type_email(String mail) {
         page.typeEmail(mail);
     }
