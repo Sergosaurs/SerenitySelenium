@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import steps.SignUpSteps;
 
 @RunWith(SerenityRunner.class)
-public class WhenSignUp {                                                                           //SERENITY USING
+public class WhenSignUp {
 
     @Steps
     SignUpSteps steps;
